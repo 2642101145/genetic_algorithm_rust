@@ -1,0 +1,2 @@
+# genetic_algorithm_rust
+使用rust语言实现简单的遗传算法

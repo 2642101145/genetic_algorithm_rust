@@ -1,6 +1,7 @@
 use crate::basic_struct::GeneticGroup;
 use rand::Rng;
 
+
 //创建种群成员，mem_num必须为复数，后续交叉函数扩充处理后可为大于1的任意实数
 pub fn creat_genetics(mem_num: u8) -> GeneticGroup {
     if mem_num%2 != 0 {
@@ -36,10 +37,10 @@ pub fn chose(genetics: &GeneticGroup) -> GeneticGroup {
     while loop_times != 0 {
         if let Some(roulette_position) = get_roulette_position(&fit_vec) {
             if let Some(&genetic_value) = genetics.genetics().get(roulette_position) {
-                new_genetics.mut_genetics().push(genetic_value);
+                new_genetics.crate_genetic(genetic_value);
             }
             else {
-                new_genetics.mut_genetics().push(0);
+                new_genetics.crate_genetic(0);
             }
         }
         loop_times -= 1;
@@ -68,8 +69,8 @@ pub fn mutation(genetics: GeneticGroup,prob:u32)-> GeneticGroup {
                 mem_b = result.1;
             }
 
-            new_genetics.mut_genetics().push(mem_a);
-            new_genetics.mut_genetics().push(mem_b);
+            new_genetics.crate_genetic(mem_a);
+            new_genetics.crate_genetic(mem_b);
 
             loop_times += 2;
         }
@@ -93,7 +94,7 @@ pub fn hybrid(genetics: GeneticGroup,prob:u32)->GeneticGroup{
                 let hybrid_point = rand::thread_rng().gen_range(0..GeneticGroup::get_genetic_len());
                 mem = genetics.invert_mem_bits(loop_times, hybrid_point);
             }
-            new_genetics.mut_genetics().push(mem);
+            new_genetics.crate_genetic(mem);
             loop_times+=1;
         }
         return new_genetics;

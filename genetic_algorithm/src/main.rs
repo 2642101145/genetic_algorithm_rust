@@ -6,7 +6,7 @@ fn main() {
     let mut genetics = genetic_algorithm::creat_genetics(6);
 
     
-    let mut loop_times = 5000;
+    let mut loop_times = 50000;
     println!("初代Genetics: {:?}", genetics);
     while loop_times!=0 {
         //选择基因

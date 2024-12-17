@@ -2,7 +2,7 @@ const GENETIC_LEN: u32 = 5;
 
 #[derive(Debug)]
 pub struct GeneticGroup{
-     genetics:Vec<u32>,//基因种群
+     genetics:Vec<u32>//基因种群
 }
 
 impl GeneticGroup {
@@ -50,6 +50,7 @@ impl GeneticGroup {
     }
 
     //设置成员
+    #[allow(dead_code)]
     pub fn mut_genetics(&mut self) -> &mut Vec<u32>
     {
         &mut self.genetics
